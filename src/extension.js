@@ -9,7 +9,9 @@ window.gmail = gmail;
 
 gmail.observe.on("compose", function(compose, type) {
   if (type == "reply"){
-    console.log("Reply");
-    compose.body('<h1>New Email!</h1>');    
+      setTimeout(function () {      
+        console.log(compose.body());
+   }, 0);
+
   }
 });
