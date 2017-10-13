@@ -7,7 +7,9 @@ const GmailFactory = require("gmail-js");
 const gmail = new GmailFactory.Gmail($);
 window.gmail = gmail;
 
-gmail.observe.on("load", () => {
-    const userEmail = gmail.get.user_email();
-    console.log("Hello, " + userEmail + ". This is your extension talking!");
+gmail.observe.on("compose", function(compose, type) {
+  if (type == "reply"){
+    console.log("Reply");
+    compose.body('<h1>New Email!</h1>');    
+  }
 });
